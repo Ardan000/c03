@@ -7,10 +7,9 @@ char *ft_strstr(char *str, char *to_find)
     int j = 0;
     int k = 0;
 
-   // char start[256];
 
     if(str[i] == '\0')
-        return str[i];
+        return &str[i];
 
     while(to_find[j] != '\0')
     {
@@ -27,20 +26,29 @@ char *ft_strstr(char *str, char *to_find)
             j = 0;
         }
         else if(str[i] == to_find[j])
+        {
             j++;
-        else if(j == k)
+            i++;
+        }
+        if(j == k)
         {
             i = i - j;
-           // start[0] = str[i];
-            return str[i];
+            return &str[i];
         }
     }
     return NULL;
 }
-
+/*
 int main()
 {
-    char *str = "bonjour, je m'appelle stanislas";
-    char *to_find = "je m'app";
-    printf("%s\n", ft_strstr(str, to_find));
+    char str[] = "bonjour, je m'appelle stanislas";
+    char to_find[] = "je";
+    char *result;
+    result = ft_strstr(str, to_find);
+    if(result)
+        printf("trouver dans %s\n", result);
+    else    
+        printf("pas trouver\n");
+
 }
+*/
